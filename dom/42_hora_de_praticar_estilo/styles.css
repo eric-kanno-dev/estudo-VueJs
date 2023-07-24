@@ -1,0 +1,39 @@
+#efeito {
+  width: 100px;
+  height: 100px;
+  border: 1px solid black;
+}
+
+.destaque {
+  background-color: red;
+  width: 200px !important;
+}
+
+.encolher {
+  background-color: gray;
+  width: 50px !important;
+}
+
+.borges1 {
+  background-color: purple;
+  border-radius: 10px;
+}
+.borges2 {
+  height: 20px;
+  width: 200px;
+  background-color: purple;
+}
+
+.borges3 {
+  height: 20px;
+  width: 200px;
+  background-color: aqua;
+}
+
+.progresso {
+  background-color: antiquewhite;
+  border: 1px solid;
+  height: 20px;
+  width: 500px;
+  display: flex;
+}

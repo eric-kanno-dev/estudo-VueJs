@@ -1,0 +1,57 @@
+.painelPlayers {
+  border: 1px solid;
+  width: 100%;
+  height: 200px;
+  background-color: aliceblue;
+  display: flex;
+}
+
+.painelHeroi,
+.painelMonstro {
+  border: 1px solid;
+  width: 600px;
+  height: 140px;
+  margin: 20px;
+  justify-content: center;
+  display: flex;
+}
+
+.texto {
+  font-size: 33;
+  font-weight: bold;
+}
+
+.barraProgresso {
+  margin-top: 30px;
+  width: 300px;
+  border: 1px solid;
+  height: 30;
+  display: block;
+}
+
+.blocoProgressoMonstro {
+  background-color: forestgreen;
+  height: 100%;
+}
+.painelBotoes {
+  border: 1px solid;
+  background-color: antiquewhite;
+  justify-content: center;
+  display: flex;
+}
+.botoes {
+  color: brown;
+  background-color: aquamarine;
+  font-size: 16px;
+
+  font-weight: bold;
+  height: 60px;
+  width: 200px;
+  margin: 10px;
+}
+.log {
+  width: 100%;
+  border: 1px solid;
+  height: 50px;
+  margin-top: 20px;
+}

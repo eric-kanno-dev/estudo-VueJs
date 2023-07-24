@@ -1,0 +1,41 @@
+<meta charset="UTF-8" />
+<script src="https://cdn.jsdelivr.net/npm/vue@2.7.10/dist/vue.js"></script>
+
+<div id="app">
+  <comp></comp>
+  <comp></comp>
+  <comp></comp>
+  <comp></comp>
+</div>
+
+<script>
+  Vue.component("comp", {
+    // template: "<h1>Primeiro Componente</h1>",
+    template: `
+    <div>
+    <h1>{{titulo1}}</h1>
+    <h1>{{titulo2}}</h1>
+  
+    <button @click="alterar()">Alterar</button>
+    <button @click="alterar2()">Alterar</button>
+    </div>
+    `,
+
+    data: function () {
+      return { titulo1: "Teste 1", titulo2: "Teste 2" };
+    },
+    methods: {
+      alterar() {
+        this.titulo1 += "!!!!!!!!";
+      },
+      alterar2() {
+        this.titulo2 += "###";
+      },
+    },
+  });
+
+  const vm = new Vue({
+    el: "#app",
+    // el: "comp",
+  });
+</script>

@@ -1,0 +1,125 @@
+<script src="https://cdn.jsdelivr.net/npm/vue@2.7.10/dist/vue.js"></script>
+<link rel="stylesheet" href="style.css" />
+<div id="app">
+  <div class="painelPlayers">
+    <div class="painelHeroi">
+      <div>
+        <span class="texto">Do bem</span>
+        <div class="barraProgresso">
+          <div
+            class="blocoProgressoMonstro"
+            :style="[{width:player.progresso, backgroundColor:player.cor}]"
+          ></div>
+          Vida : {{player.progresso}}
+        </div>
+      </div>
+    </div>
+    <div class="painelMonstro">
+      <div>
+        <span class="texto">Monstro</span>
+        <div class="barraProgresso">
+          <div
+            class="blocoProgressoMonstro"
+            :style="[{width:monstro.progresso,backgroundColor:monstro.cor}]"
+          ></div>
+        </div>
+        Vida : {{monstro.progresso}}
+      </div>
+    </div>
+  </div>
+  <div class="painelBotoes" style="height: 100px" v-if="jogoEmAndamento">
+    <input
+      type="button"
+      class="botoes"
+      value="Atacar"
+      @click="atacar('ataque')"
+    />
+    <input
+      type="button"
+      class="botoes"
+      value="Ataque Especial"
+      @click="atacar('ataqueEspecial')"
+    />
+    <input type="button" class="botoes" value="Curar" @click="curar()" />
+  </div>
+
+  <div v-for="log in logJogo">
+    <div class="log">Player: {{log.player}} - Valor Ataque: {{log.ataque}}</div>
+  </div>
+</div>
+
+<script>
+  new Vue({
+    el: "#app",
+    data: {
+      monstro: {
+        progresso: 300,
+        cor: "green",
+      },
+      player: {
+        progresso: 300,
+        cor: "green",
+      },
+
+      logJogo: [],
+      jogoEmAndamento: true,
+    },
+    methods: {
+      atacar(tipo) {
+        if (tipo === "ataque") {
+          vlrAtaque = getRandomInt(5, 10);
+        }
+        if (tipo === "ataqueEspecial") {
+          vlrAtaque = getRandomInt(20, 30);
+        }
+        this.logJogo.push({ player: "Bem", ataque: vlrAtaque });
+        this.monstro.progresso = this.monstro.progresso - vlrAtaque;
+
+        this.monstroAtacar();
+        this.checarVitoria();
+      },
+
+      monstroAtacar() {
+        vlrAtaque = getRandomInt(10, 15);
+        this.logJogo.push({ player: "Monstro", ataque: vlrAtaque });
+        this.player.progresso = this.player.progresso - vlrAtaque;
+      },
+
+      curar() {
+        this.player.progresso = this.player.progresso + 13;
+        this.logJogo.push({ player: "Bem", ataque: "Usou curar" });
+        this.monstroAtacar();
+        this.checarVitoria();
+      },
+
+      checarVitoria() {
+        if (this.monstro.progresso < 80) {
+          this.monstro.cor = "red";
+        }
+        if (this.player.progresso < 80) {
+          this.player.cor = "red";
+        }
+        if (this.monstro.progresso < 0) {
+          this.monstro.progresso = 0;
+          alert("Você venceu");
+          this.finalizarJogo();
+        }
+        if (this.player.progresso < 0) {
+          this.player.progresso = 0;
+          alert("Você perdeu");
+          this.finalizarJogo();
+        }
+        if (this.player.progresso > 300) {
+          this.player.progresso = 300;
+        }
+      },
+
+      finalizarJogo() {
+        this.jogoEmAndamento = false;
+      },
+    },
+  });
+  function getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+</script>

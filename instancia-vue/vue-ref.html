@@ -1,0 +1,29 @@
+<meta charset="UTF-8" />
+<script src="https://cdn.jsdelivr.net/npm/vue@2.7.10/dist/vue.js"></script>
+
+<div id="app">
+  <h1 ref="aulaRef">{{titulo1}}</h1>
+  <h1>{{titulo2}}</h1>
+
+  <button @click="alterar()">Alterar</button>
+  <button @click="alterar2()">Alterar</button>
+</div>
+
+<script>
+  const vm1 = new Vue({
+    el: "#app",
+    data: {
+      titulo1: "Teste 1",
+      titulo2: "Teste 2",
+    },
+    methods: {
+      alterar() {
+        vm1.titulo1 += "!!!!!!!!";
+      },
+      alterar2() {
+        this.titulo2 += "###";
+        console.log(this.$ref.aulaRef.innerText);
+      },
+    },
+  });
+</script>

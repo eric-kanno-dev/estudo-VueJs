@@ -1,0 +1,24 @@
+<meta charset="UTF-8" />
+<script src="https://cdn.jsdelivr.net/npm/vue@2.7.10/dist/vue.js"></script>
+
+<div id="app1">
+  {{titulo1}} {{novaInfo}}
+
+  <button @click="alterar()">Alterar</button>
+</div>
+
+<script>
+  const vm1 = new Vue({
+    el: "#app1",
+    data: {
+      titulo1: "Teste1",
+    },
+    methods: {
+      alterar() {
+        vm1.titulo1 += "!!!!!!!!";
+      },
+    },
+  });
+
+  vm1.novaInfo = "Teste";
+</script>
